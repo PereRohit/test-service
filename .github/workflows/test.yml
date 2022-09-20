@@ -21,7 +21,8 @@ jobs:
 #        run: git config --global url."https://${TOKEN}:@github.com".insteadOf "https://github.com" # For dependant repos which are private
 
       - name: Run unit test and generate report
-        run: sh build/ci/go.test.sh
+        #run: sh build/ci/go.test.sh
+        run: go test -short -race -coverprofile=coverage.txt -covermode=atomic ./...
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
